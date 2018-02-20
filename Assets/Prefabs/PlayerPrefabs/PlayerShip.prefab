@@ -54,6 +54,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   padding: 0.5
+  playerProjectile: {fileID: 1340484629608098, guid: 0c20589cc35b050488c2b281831264fc,
+    type: 2}
+  projectileSpeed: 5
+  firingRate: 0.2
 --- !u!212 &212352543679195230
 SpriteRenderer:
   m_ObjectHideFlags: 1

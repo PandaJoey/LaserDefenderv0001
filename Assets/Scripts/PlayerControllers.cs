@@ -5,9 +5,12 @@ using UnityEngine;
 public class PlayerControllers : MonoBehaviour {
     public float speed = 15.0f;
     public float padding = 0.5f;
+    public GameObject playerProjectile;
     float xmin;
     float xmax;
-
+    private GameObject beam;
+    public float projectileSpeed;
+    public float firingRate = 0.2f;
     // Use this for initialization
     void Start()  {
         float distance = transform.position.z - Camera.main.transform.position.z;
@@ -28,5 +31,17 @@ public class PlayerControllers : MonoBehaviour {
         }
         float newX = Mathf.Clamp(transform.position.x, xmin, xmax);
         transform.position = new Vector3(newX, transform.position.y, transform.position.z);
+
+        if(Input.GetKeyDown(KeyCode.UpArrow)) {
+            InvokeRepeating("Fire", 0.000001f, firingRate);
+        } else if (Input.GetKeyUp(KeyCode.UpArrow)) {
+            CancelInvoke("Fire");
+        }
     }
+
+    void Fire() {
+        beam = Instantiate(playerProjectile, transform.position, Quaternion.identity);
+        beam.GetComponent<Rigidbody2D>().velocity = new Vector3(0, projectileSpeed, 0);
+    }
+    
 }
