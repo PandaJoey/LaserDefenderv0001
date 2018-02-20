@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BasicLaser : MonoBehaviour {
-
+	public float damage = 1.0f;
 	// Use this for initialization
 	void Start () {
 		
